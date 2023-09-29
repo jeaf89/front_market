@@ -146,3 +146,18 @@ justify-content: center;
   background-color: #031633;
   width: 100%;
 }
+
+.inputReg{
+ width: 120%;;
+}
+
+.registro{
+  margin-top: 10%;
+  /* width: 60%; */
+}
+
+.login{
+  margin-top: 10%;
+  background-color: #0A5D00;
+  color: white;
+}
