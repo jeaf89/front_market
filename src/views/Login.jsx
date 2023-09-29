@@ -43,9 +43,11 @@ const LoginView = () => {
         const urlServer = "http://localhost:3000";
         const endpoint = "/auth/login";
         const { email, password } = usuarioLocal;
+        console.log(email+" "+ password);
         try {
             if (!email || !password) return alert("Email y password obligatorias");
             const { data: token } = await axios.post(urlServer + endpoint, usuarioLocal);
+            console.log(token)
             alert("Usuario identificado con éxito.");
             localStorage.setItem("token", token);
             

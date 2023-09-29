@@ -72,3 +72,77 @@ code {
   fill: red;
   stroke: none;
 }
+/* .navbar, */
+.footer, .cardHome, .imgHome{
+  background: linear-gradient(rgba(5,7,12,0.75), rgba(5,7,12,0.75)), url("https://img.freepik.com/vector-premium/papel-pintado-abstracto-acuarela-colorida_1034-2362.jpg") 
+  ;
+  background-position: center;
+}
+
+.imgHome{
+height: 80vh;
+background-repeat: no-repeat;
+text-align: center;
+align-items: center;
+display: flex;
+justify-content: center;
+
+}
+
+.cardHome{
+  background-repeat: repeat;
+
+}
+
+.imgHomeh1{
+  color:white;
+  display: block;
+  transition: all .5s;
+  /* animation: mover-izquierda-derecha 2s infinite;   */
+}
+/* @keyframes mover-izquierda-derecha{
+  from {
+    transform: translateX(-100px);
+  }
+  to{
+    transform: translateX(10px)
+  }
+} */
+
+.imgHomeh1:hover{
+  transform: scale(1.09);
+}
+
+.navbarHome{
+  background-color: #444649;
+  display: flex;
+  justify-content: flex-end;
+  
+
+}
+
+.navbarHome div div h6:hover{
+  transform: scale(1.2);
+}
+
+.formulario{
+  
+  /* text-align: center; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  align-items: center;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.ancho{
+  width: 80%;
+  text-align: center;
+  color: white;
+}
+
+.perfil{
+  background-color: #031633;
+  width: 100%;
+}

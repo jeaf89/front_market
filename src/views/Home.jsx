@@ -65,8 +65,18 @@ const Home = () => {
 
     return(
         <div className="pt-5">
+            <div className="w-100 imgHome">
+                <div>
+                     <div>
+                          <h1 className="imgHomeh1">Bienvenido a ArtMarket</h1>
+                     </div>
+                     <div>
+                          <h5 className="imgHomeh1">Vende tus obras de Arte con nosotros</h5>
+                     </div>
+                </div>              
+            </div>
             <CarouselImages></CarouselImages>
-            <div className="row w-100 mt-5">
+            <div className="row w-100 mt-5 cardHome">
                 {artworks.map(
                     (element, index) => (
                         <div key={index} className='col-12 col-md-6 col-xl-3'>

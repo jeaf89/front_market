@@ -85,11 +85,12 @@ const UserViewBuyer = ({ user }) => {
     const artistCollection = artworks.filter((element) => element.seller_id === user.user_id);
 
     return (
-        <Container className='d-flex align-items-center flex-column vh-100 mt-5 mb-3 pt-5'>
-            <h2>Bienvenido, {user.username}</h2>
-
+        <div className='d-flex mt-5 mb-3 flex-column pt-5 perfil'>
+            
+            <h2 className='text-light'>Bienvenido {user.username}!</h2>
+            
             <Container className='pt-3'>
-                <h1 className="text-center h3">Obras</h1>
+                {/* <h1 className="text-center h3 text-light">Obras que has ingresado</h1>
                 <CardGroup>
                 {
                     artistCollection.map((element, index) => (
@@ -105,25 +106,46 @@ const UserViewBuyer = ({ user }) => {
                     </Card>
                     ))
                 }                
-                </CardGroup>
-                <Card className='mt-5 mb-5 text-center'>
-                    <h2>Agregar Obra</h2>
-                    <div className='form-group'>
+                </CardGroup> */}
+                <Card className='mt-5 mb-5 text-center formulario bg-secondary'>
+                    <h2 className='ancho'>Quieres agregar una Obra en ArtMarket?</h2>
+                    <br></br>
+                    <div className='form-group ancho'>
+                        <label className='label-left'>Nombre de la obra</label>
                         <input className='form-control'  type='text' name='title' value={artworkData.title}  onChange={handleInputChange} placeholder='Ingresa el nombre de la obra' ></input>
                         <br></br>
+                        <label className='label-left'>Descripción</label>
                         <input className='form-control' type='text' name='description' value={artworkData.description}  onChange={handleInputChange} placeholder='Descripción' ></input>
                         <br></br>
-                        <label className='label-left'>Valor:</label>
-                        <input className='form-control' type='number' name='price' value={artworkData.price}  onChange={handleInputChange} placeholder='Valor'></input>
+                        <label className='label-left'>Precio</label>
+                        <input className='form-control' type='text' name='price' value={artworkData.price}  onChange={handleInputChange} placeholder='Valor'></input>
                         <br></br>
+                        <label className='label-left'>URL imagen</label>
                         <input className='form-control' type='text' name='url_image' value={artworkData.url_image}   onChange={handleInputChange} placeholder='url imagen' ></input>
                         <br></br>
-                        <button onClick={handleAddArtwork} className='btn btn-dark mb-2'>Agregar obra</button>
+                        <button onClick={handleAddArtwork} className='btn btn-warning mb-2'>Agregar obra</button>
                     </div>
                     {console.log(artworks)}
-                </Card>                
+                </Card>   
+                <h1 className="text-center h3 text-light">Obras que has ingresado</h1>
+                <CardGroup>
+                {
+                    artistCollection.map((element, index) => (
+                    <Card className="bg-light text-white p-2">
+                        <Card.Img 
+                        key={index}
+                        variant="top"
+                        className="artist-collection" 
+                        src={element.url_image} />
+                        <Card.ImgOverlay>
+                        <Card.Title>{element.title}</Card.Title>
+                        </Card.ImgOverlay>
+                    </Card>
+                    ))
+                }                
+                </CardGroup>          
             </Container>            
-        </Container>
+        </div>
     );
 };
 
