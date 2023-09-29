@@ -7,8 +7,8 @@ const urlServer = "http://localhost:3000";
 //Esto de arriba es nuevo
 const Busqueda = () => {
     const { artworks, setArtworks, setNavTotal, updatingNavTotal, user, setReloadData} = useContext(MyContext);
-    // const [input_filter, setInput_filter] = useState('');
-    const [setInput_filter] = useState('');
+    const [input_filter, setInput_filter] = useState('');
+
 
     const navigate = useNavigate();
 
@@ -55,15 +55,15 @@ const Busqueda = () => {
     return (
         <div className="row w-100">
             <input className=" fixed-top mt-5 form-control bg-light text-center text-dark" placeholder="Busca en ©Artworks Marketplace" onChange={handleInputFilter}></input>
-            {/* {artworks.filter((elemento) => {          
-                return true;     
+            {artworks.filter((elemento) => {           
                  if (input_filter === '') {
                      return elemento;                    
                  } else if (elemento.title.toLocaleLowerCase().includes(input_filter.toLocaleLowerCase()) || elemento.description.toLocaleLowerCase().includes(input_filter.toLocaleLowerCase())) {
                      return elemento;
                 }
-            }).map( */}
-            {artworks.map((element, index) => (
+            }).map(
+            //{artworks.map(
+                (element, index) => (
                     <div key={index} className='col-12 col-md-6 col-xl-3'>
                         <div className='card m-auto my-4 tarjeta'>
                             <img onClick={() => navigate(`/artwork/${element.product_id}`)} src={element.url_image} alt="imagen obra" className="card-img-top heart_pointer"></img>
