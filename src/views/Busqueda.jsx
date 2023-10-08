@@ -8,6 +8,8 @@ const urlServer = "http://localhost:3000";
 const Busqueda = () => {
     const { artworks, setArtworks, setNavTotal, updatingNavTotal, user, setReloadData} = useContext(MyContext);
     const [input_filter, setInput_filter] = useState('');
+    const [input_minPrice, setInput_minPrice] = useState('');
+    const [input_maxPrice, setInput_maxPrice] = useState('');
 
 
     const navigate = useNavigate();
@@ -52,17 +54,68 @@ const Busqueda = () => {
         setInput_filter(e.target.value);
     }
 
+    const handleInputFilterMinPrice = (e) => {
+    // console.log(e.target.value)
+        setInput_minPrice(e.target.value);
+    }
+
+    const handleInputFilterMaxPrice = (e) => {
+    //console.log(e.target.value)
+        setInput_maxPrice(e.target.value);
+    }
+
     return (
         <div className="row w-100">
-            <input className=" fixed-top mt-5 form-control bg-light text-center text-dark" placeholder="Busca en ©Artworks Marketplace" onChange={handleInputFilter}></input>
-            {artworks.filter((elemento) => {           
-                 if (input_filter === '') {
+            {/* <h5 className=" filtroBusqueda">Filtra</h5> */}
+            <div className="d-flex flex-column" >
+                {/* <h5 className=" filtroBusqueda">Utiliza los siguientes filtros en ArtMarket</h5> */}
+                <div className="d-flex align-items-center">
+                    <input className="mt-5 form-control bg-light text-center text-dark" placeholder="Filtro precio desde" onChange={handleInputFilterMinPrice}></input>
+                    <input className="mt-5 form-control bg-light text-center text-dark" placeholder="Filtro precio hasta" onChange={handleInputFilterMaxPrice}></input>
+                    <input className="mt-5 form-control bg-light text-center text-dark" placeholder="Busca en ©Artworks Marketplace" onChange={handleInputFilter}></input>
+                </div>
+            </div>
+            {artworks.filter((elemento) => {     
+                 if (input_filter === '' && input_minPrice === '' && input_maxPrice === '') {
                      return elemento;                    
-                 } else if (elemento.title.toLocaleLowerCase().includes(input_filter.toLocaleLowerCase()) || elemento.description.toLocaleLowerCase().includes(input_filter.toLocaleLowerCase())) {
-                     return elemento;
+                 } 
+                 else if (((elemento.title.toLocaleLowerCase().includes(input_filter.toLocaleLowerCase()) || elemento.description.toLocaleLowerCase().includes(input_filter.toLocaleLowerCase())) && input_minPrice === '' && input_maxPrice === '')) {
+                    return elemento;
+                 } 
+                 else if(input_minPrice !== '' && input_filter === '' && input_maxPrice === ''){
+                    var minPrice = parseFloat(elemento.price);
+                    var filterMinPrice = parseFloat(input_minPrice)
+                    console.log(input_minPrice)
+                    if(!isNaN(minPrice) && !isNaN(filterMinPrice) && minPrice >= filterMinPrice){
+                       return elemento;
+                    }
                 }
+                else if(input_maxPrice !== '' && input_filter === '' && input_minPrice === ''){
+                    var maxPrice = parseFloat(elemento.price);
+                    var filterMaxPrice = parseFloat(input_maxPrice)                    
+                    if(!isNaN(maxPrice) && !isNaN(filterMaxPrice) && maxPrice <= filterMaxPrice){
+                       return elemento;
+                    }
+                }
+                else if(input_minPrice !== '' && input_maxPrice!== '' && input_filter === ''){
+                    var elementPrice = parseFloat(elemento.price);  
+                    var inputMinPrice = parseFloat(input_minPrice);
+                    var inputMaxPrice = parseFloat(input_maxPrice)                   
+                    if(!isNaN(elementPrice) && !isNaN(inputMinPrice) && !isNaN(inputMaxPrice) && ((inputMinPrice <= elementPrice) && (elementPrice <= inputMaxPrice))){
+                       return elemento;
+                    }
+                }
+                else if(input_minPrice !== '' && input_maxPrice!== '' && input_filter !== ''){                 
+                    if(!isNaN(elementPrice) && !isNaN(inputMaxPrice) 
+                        && (
+                        (inputMinPrice <= elementPrice) && (elementPrice <= inputMaxPrice)
+                        ) 
+                        )
+                        {
+                            return elemento;
+                        }
+                    }
             }).map(
-            //{artworks.map(
                 (element, index) => (
                     <div key={index} className='col-12 col-md-6 col-xl-3'>
                         <div className='card m-auto my-4 tarjeta'>

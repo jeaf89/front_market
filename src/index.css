@@ -157,7 +157,11 @@ justify-content: center;
 }
 
 .login{
-  margin-top: 10%;
+  margin-top: 15%;
   background-color: #0A5D00;
   color: white;
+}
+
+.filtroBusqueda{
+  margin-top: 8%;
 }
