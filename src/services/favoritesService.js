@@ -3,7 +3,8 @@ import axios from 'axios';
 // Función para obtener favorites dede el backend
 export const getFavorites = async () => {
     try {
-        const response = await axios.get('http://localhost:3000/favorites');
+        // const response = await axios.get('http://localhost:3000/favorites');
+        const response = await axios.get('https://artmarketback.onrender.com/favorites');
         return response.data;
     } catch (error) {
         console.error('Error al obtener los favoritos:', error);
@@ -13,7 +14,8 @@ export const getFavorites = async () => {
 
 export const addFavorite = async (product_id, token) => {
     try {
-        const response = await axios.post(`http://localhost:3000/favorites/${product_id}`, {}, {
+        // const response = await axios.post(`http://localhost:3000/favorites/${product_id}`, {}, {
+        const response = await axios.post(`https://artmarketback.onrender.com/favorites/${product_id}`, {}, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json'
@@ -33,7 +35,8 @@ export const addFavorite = async (product_id, token) => {
 
 export const removeFavorite = async (product_id, token) => {
     try {
-        const response = await axios.delete(`http://localhost:3000/favorites/${product_id}`, {
+        // const response = await axios.delete(`http://localhost:3000/favorites/${product_id}`, {
+        const response = await axios.delete(`https://artmarketback.onrender.com/favorites/${product_id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json'

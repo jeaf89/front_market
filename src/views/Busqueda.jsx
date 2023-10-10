@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import MyContext from "../my_context";
 //Esto de abajo es nuevo
 import axios from 'axios';
-const urlServer = "http://localhost:3000";
+// const urlServer = "http://localhost:3000";
+const urlServer = "https://artmarketback.onrender.com";
 //Esto de arriba es nuevo
 const Busqueda = () => {
     const { artworks, setArtworks, setNavTotal, updatingNavTotal, user, setReloadData} = useContext(MyContext);

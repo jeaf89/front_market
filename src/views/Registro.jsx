@@ -18,7 +18,8 @@ const RegisterView = () => {
     };
 
     const registrarUsuario = async () => {
-        const urlServer = "http://localhost:3000";
+        // const urlServer = "http://localhost:3000";
+        const urlServer = "https://artmarketback.onrender.com";
         const endpoint = "/auth/register";
         try {
             await axios.post(urlServer + endpoint, usuario);

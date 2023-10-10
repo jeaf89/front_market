@@ -40,7 +40,8 @@ const LoginView = () => {
     };
 
     const iniciarSesion = async () => {
-        const urlServer = "http://localhost:3000";
+        // const urlServer = "http://localhost:3000";
+        const urlServer = "https://artmarketback.onrender.com";
         const endpoint = "/auth/login";
         const { email, password } = usuarioLocal;
         console.log(email+" "+ password);
