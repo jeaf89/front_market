@@ -7,7 +7,7 @@ import axios from 'axios';
 const urlServer = "https://artmarketback.onrender.com";
 
 const Busqueda = () => {
-    const { artworks, setArtworks, setNavTotal, updatingNavTotal, user, setReloadData} = useContext(MyContext);
+    const { artworks, setArtworks, setNavTotal, updatingNavTotal, user, setReloadData, isLoggedIn} = useContext(MyContext);
     const [input_filter, setInput_filter] = useState('');
     const [input_minPrice, setInput_minPrice] = useState('');
     const [input_maxPrice, setInput_maxPrice] = useState('');
